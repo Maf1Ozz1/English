@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Journey | MedievalFest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Dark Medieval Booking Theme */
+        :root {
+            --primary: #8b4513;
+            --primary-dark: #5d2906;
+            --primary-light: #d2691e;
+            --secondary: #d4af37;
+            --secondary-light: #ffd700;
+            --secondary-dark: #b8860b;
+            --accent: #dc143c;
+            --dark: #0d0901;
+            --dark-light: #1a0f0a;
+            --dark-lighter: #2a1c07;
+            --light: #f8f4e9;
+            --light-transparent: rgba(248, 244, 233, 0.9);
+            --success: #2e8b57;
+            --gradient-gold: linear-gradient(135deg, #d4af37, #ffd700, #ffed4e);
+            --gradient-wood: linear-gradient(135deg, #8b4513, #a0522d, #d2691e);
+            --gradient-royal: linear-gradient(135deg, #0d0901, #1a0f0a, #2a1c07);
+            --gradient-success: linear-gradient(135deg, #2e8b57, #3cb371, #90ee90);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 35px 60px -15px rgba(139, 69, 19, 0.4);
+            --glass-bg: rgba(26, 15, 10, 0.85);
+            --glass-border: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--light);
+            background: var(--gradient-royal);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Background */
+        .booking-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Modern Navigation */
+        .navbar-booking {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 9, 1, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-light);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after, .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Booking */
+        .booking-hero {
+            height: 70vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+      .booking-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Am pus gradienții primii pentru a fi deasupra pozei și am adăugat un strat negru semi-transparent */
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 60%),
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* Strat de întunecare */
+        url('https://static.wixstatic.com/media/8e5159_8338fae5650e489fad20629122dc086c~mv2.png/v1/fill/w_1109,h_828,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/8e5159_8338fae5650e489fad20629122dc086c~mv2.png') no-repeat center center/cover;
+}
+        .booking-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .booking-title {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 50px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 80px rgba(212, 175, 55, 0.6), 0 0 100px rgba(212, 175, 55, 0.4); }
+        }
+
+        .booking-subtitle {
+            font-size: 1.8rem;
+            color: var(--secondary-light);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        /* 3D Interactive Packages */
+        .packages-section {
+            padding: 6rem 0;
+            position: relative;
+            background: rgba(13, 9, 1, 0.7);
+        }
+
+        .packages-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .packages-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-light);
+        }
+
+        .packages-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            perspective: 1000px;
+        }
+
+        .package-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid var(--glass-border);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .package-card.popular {
+            transform: scale(1.05);
+            border-color: var(--secondary);
+            box-shadow: 
+                var(--shadow-xl),
+                0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .package-card:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(212, 175, 55, 0.4);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gradient-gold);
+            color: var(--dark);
+            padding: 0.5rem 3rem;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: rotate(45deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .package-header {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(139, 69, 19, 0.3), 
+                rgba(93, 41, 6, 0.5));
+            border-bottom: 3px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            transition: left 0.6s;
+        }
+
+        .package-card:hover .package-header::before {
+            left: 100%;
+        }
+
+        .package-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--secondary-light);
+            margin-bottom: 1rem;
+        }
+
+        .package-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .package-price span {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .package-duration {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .package-features {
+            padding: 2.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature-text {
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .feature-text.unavailable {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: line-through;
+        }
+
+        .package-cta {
+            padding: 2rem 2.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Interactive Booking Form */
+        .booking-section {
+            padding: 6rem 0;
+            background: rgba(26, 15, 10, 0.7);
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+        }
+
+        .booking-form-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 2px solid var(--glass-border);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+
+        .form-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--secondary-light);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--secondary);
+        }
+
+        /* Real-time Summary */
+        .booking-summary {
+            position: sticky;
+            top: 120px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 2px solid var(--glass-border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .summary-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--secondary-light);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .summary-value {
+            color: white;
+            font-weight: 600;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--secondary);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--secondary-light);
+        }
+
+        .summary-features {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+        }
+
+        .summary-features h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .summary-features ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .summary-features li {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .summary-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            padding: 6rem 0;
+            background: rgba(13, 9, 1, 0.8);
+        }
+
+        .payment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .payment-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--secondary-light);
+            margin-bottom: 1rem;
+        }
+
+        .payment-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .payment-option {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .payment-option:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .payment-option.selected {
+            border-color: var(--secondary);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .payment-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .payment-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--secondary-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Confirmation Modal */
+        .confirmation-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 9, 1, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .confirmation-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .confirmation-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            padding: 4rem;
+            max-width: 600px;
+            width: 90%;
+            border: 3px solid var(--secondary);
+            box-shadow: 
+                0 0 100px rgba(212, 175, 55, 0.5),
+                var(--shadow-xl);
+            text-align: center;
+            transform: scale(0.9);
+            animation: modalAppear 0.5s forwards;
+        }
+
+        @keyframes modalAppear {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .confirmation-icon {
+            font-size: 5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            animation: successPulse 2s infinite;
+        }
+
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .confirmation-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--secondary-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .confirmation-message {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .confirmation-details {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .detail-value {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--gradient-wood);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-gold);
+            border-radius: 52px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-large {
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Floating Coins Animation */
+        .floating-coins {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .coin {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(212, 175, 55, 0.3);
+            animation: coinFloat 20s linear infinite;
+        }
+
+        @keyframes coinFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .booking-summary {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .booking-title {
+                font-size: 3.5rem;
+            }
+            
+            .packages-title,
+            .payment-title {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .confirmation-content {
+                padding: 2rem;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <canvas class="booking-canvas" id="bookingCanvas"></canvas>
+
+    <!-- Floating Coins -->
+    <div class="floating-coins" id="floatingCoins"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar-booking">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-crown"></i>
+                <span>MEDIEVALFEST</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="booking.html" class="active">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="booking-hero">
+        <div class="booking-hero-overlay"></div>
+        <div class="booking-hero-content">
+            <h1 class="booking-title">BOOK YOUR<br>MEDIEVAL JOURNEY</h1>
+            <p class="booking-subtitle">Secure Your Place in History</p>
+            <div style="margin-top: 3rem;">
+                <a href="#packages" class="btn-primary btn-large" style="display: inline-block; margin: 0 1rem;">
+                    <i class="fas fa-gem"></i> VIEW PACKAGES
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Interactive Packages -->
+    <section class="packages-section" id="packages">
+        <div class="packages-container">
+            <h2 class="packages-title">Choose Your Adventure</h2>
+            <p class="packages-subtitle">Select from our exclusive medieval travel packages</p>
+            
+            <div class="packages-grid">
+                <!-- Peasant Package -->
+                <div class="package-card" data-package="peasant" data-price="199">
+                    <div class="package-header">
+                        <h3 class="package-name">Peasant Package</h3>
+                        <div class="package-price">£199<span>/person</span></div>
+                        <div class="package-duration">2 Days / 1 Night</div>
+                    </div>
+                    <div class="package-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">1 Night Accommodation</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Festival Entry (2 Days)</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Basic Breakfast</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Guided Market Tour</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-times"></i></div>
+                                <span class="feature-text unavailable">Jousting Tournament Seats</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-times"></i></div>
+                                <span class="feature-text unavailable">Medieval Feast</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="package-cta">
+                        <button class="btn-primary btn-select" data-package="peasant">
+                            SELECT PACKAGE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Knight Package (Popular) -->
+                <div class="package-card popular" data-package="knight" data-price="349">
+                    <div class="package-badge">MOST POPULAR</div>
+                    <div class="package-header">
+                        <h3 class="package-name">Knight Package</h3>
+                        <div class="package-price">£349<span>/person</span></div>
+                        <div class="package-duration">3 Days / 2 Nights</div>
+                    </div>
+                    <div class="package-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">2 Nights Accommodation</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Festival Entry (3 Days)</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Full Breakfast Daily</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">VIP Jousting Tournament Seats</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Medieval Feast Experience</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Knight Training Session</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="package-cta">
+                        <button class="btn-primary btn-select" data-package="knight">
+                            SELECT PACKAGE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Royal Package -->
+                <div class="package-card" data-package="royal" data-price="599">
+                    <div class="package-header">
+                        <h3 class="package-name">Royal Package</h3>
+                        <div class="package-price">£599<span>/person</span></div>
+                        <div class="package-duration">4 Days / 3 Nights</div>
+                    </div>
+                    <div class="package-features">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">3 Nights Luxury Accommodation</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">All-Access Festival Pass</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Gourmet Meals Daily</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Royal Box Jousting Seats</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Private Feast with Nobility</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-check"></i></div>
+                                <span class="feature-text">Personal Guide & Costume Rental</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="package-cta">
+                        <button class="btn-primary btn-select" data-package="royal">
+                            SELECT PACKAGE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Booking Form -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <div class="booking-form-container">
+                <h2 class="form-title">Your Journey Details</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label class="form-label">Selected Package</label>
+                        <select class="form-control" id="packageSelect" required>
+                            <option value="">Select a package</option>
+                            <option value="peasant">Peasant Package - £199</option>
+                            <option value="knight" selected>Knight Package - £349</option>
+                            <option value="royal">Royal Package - £599</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Travel Date</label>
+                            <input type="date" class="form-control" id="travelDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Number of Guests</label>
+                            <select class="form-control" id="guests" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2" selected>2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Special Requests</label>
+                        <textarea class="form-control" id="specialRequests" rows="4" placeholder="Dietary requirements, accessibility needs, or special arrangements..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the Terms & Conditions and Privacy Policy</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block" style="margin-top: 2rem;">
+                        <i class="fas fa-lock"></i> PROCEED TO PAYMENT
+                    </button>
+                </form>
+            </div>
+
+            <!-- Real-time Summary -->
+            <div class="booking-summary">
+                <h3 class="summary-title">Booking Summary</h3>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Package:</span>
+                    <span class="summary-value" id="summaryPackage">Knight Package</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Duration:</span>
+                    <span class="summary-value" id="summaryDuration">3 Days / 2 Nights</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Guests:</span>
+                    <span class="summary-value" id="summaryGuests">2</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Package Price:</span>
+                    <span class="summary-value" id="summaryPrice">£698</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Service Fee:</span>
+                    <span class="summary-value">£50</span>
+                </div>
+                
+                <div class="summary-item">
+                    <span class="summary-label">Tax:</span>
+                    <span class="summary-value" id="summaryTax">£74.80</span>
+                </div>
+                
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="summaryTotal">£822.80</span>
+                </div>
+
+                <div class="summary-features">
+                    <h4>What's Included:</h4>
+                    <ul id="includedFeatures">
+                        <li>Accommodation</li>
+                        <li>Festival Entry</li>
+                        <li>VIP Tournament Seats</li>
+                        <li>Medieval Feast</li>
+                        <li>All listed activities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="payment-container">
+            <h2 class="payment-title">Secure Payment</h2>
+            <p class="payment-subtitle">Choose your preferred payment method</p>
+            
+            <div class="payment-options">
+                <div class="payment-option" data-method="card">
+                    <div class="payment-icon"><i class="fas fa-credit-card"></i></div>
+                    <h3 class="payment-name">Credit/Debit Card</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Pay securely with your card</p>
+                </div>
+                
+                <div class="payment-option" data-method="paypal">
+                    <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+                    <h3 class="payment-name">PayPal</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Fast and secure payment</p>
+                </div>
+                
+                <div class="payment-option" data-method="apple">
+                    <div class="payment-icon"><i class="fab fa-apple-pay"></i></div>
+                    <h3 class="payment-name">Apple Pay</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Pay with your Apple device</p>
+                </div>
+            </div>
+
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-discover"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h2 class="confirmation-title">Booking Confirmed!</h2>
+            <p class="confirmation-message">Your journey through time has been secured. Prepare for an unforgettable medieval adventure!</p>
+            
+            <div class="confirmation-details">
+                <div class="detail-item">
+                    <span class="detail-label">Booking Reference:</span>
+                    <span class="detail-value" id="bookingRef">MF-2024-00123</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Package:</span>
+                    <span class="detail-value" id="confirmPackage">Knight Package</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Travel Date:</span>
+                    <span class="detail-value" id="confirmDate">15 June 2024</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Guests:</span>
+                    <span class="detail-value" id="confirmGuests">2</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Total Amount:</span>
+                    <span class="detail-value" id="confirmTotal">£822.80</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                <button class="btn-primary" onclick="window.location.href='index.html'">
+                    <i class="fas fa-home"></i> RETURN HOME
+                </button>
+                <button class="btn-primary" onclick="window.print()">
+                    <i class="fas fa-print"></i> PRINT RECEIPT
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animated Background
+        const canvas = document.getElementById('bookingCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = `rgba(212, 175, 55, ${Math.random() * 0.2 + 0.1})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 150; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Floating Coins
+        function createFloatingCoins() {
+            const coinsContainer = document.getElementById('floatingCoins');
+            for (let i = 0; i < 20; i++) {
+                const coin = document.createElement('div');
+                coin.className = 'coin';
+                coin.innerHTML = '<i class="fas fa-coins"></i>';
+                coin.style.left = `${Math.random() * 100}%`;
+                coin.style.animationDelay = `${Math.random() * 20}s`;
+                coin.style.opacity = Math.random() * 0.3 + 0.1;
+                coinsContainer.appendChild(coin);
+            }
+        }
+
+        // Package Selection
+        const packageCards = document.querySelectorAll('.package-card');
+        const packageSelect = document.getElementById('packageSelect');
+        const selectButtons = document.querySelectorAll('.btn-select');
+
+        const packageData = {
+            peasant: {
+                name: 'Peasant Package',
+                price: 199,
+                duration: '2 Days / 1 Night',
+                features: ['Accommodation', 'Festival Entry', 'Basic Breakfast', 'Guided Market Tour']
+            },
+            knight: {
+                name: 'Knight Package',
+                price: 349,
+                duration: '3 Days / 2 Nights',
+                features: ['Accommodation', 'Festival Entry', 'Full Breakfast Daily', 'VIP Jousting Seats', 'Medieval Feast', 'Knight Training']
+            },
+            royal: {
+                name: 'Royal Package',
+                price: 599,
+                duration: '4 Days / 3 Nights',
+                features: ['Luxury Accommodation', 'All-Access Pass', 'Gourmet Meals', 'Royal Box Seats', 'Private Feast', 'Personal Guide']
+            }
+        };
+
+        function selectPackage(packageId) {
+            // Update active card
+            packageCards.forEach(card => {
+                card.classList.remove('popular');
+                card.style.transform = '';
+            });
+            
+            const selectedCard = document.querySelector(`[data-package="${packageId}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('popular');
+                selectedCard.style.transform = 'translateY(-20px) rotateX(5deg)';
+            }
+
+            // Update form select
+            packageSelect.value = packageId;
+            
+            // Update summary
+            updateSummary();
+        }
+
+        selectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const packageId = this.dataset.package;
+                selectPackage(packageId);
+                
+                // Scroll to form
+                document.querySelector('.booking-section').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        packageCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const packageId = this.dataset.package;
+                selectPackage(packageId);
+            });
+        });
+
+        packageSelect.addEventListener('change', function() {
+            selectPackage(this.value);
+        });
+
+        // Real-time Summary Update
+        function updateSummary() {
+            const packageId = packageSelect.value;
+            const guests = parseInt(document.getElementById('guests').value) || 2;
+            const packageInfo = packageData[packageId];
+            
+            if (!packageInfo) return;
+
+            const basePrice = packageInfo.price * guests;
+            const serviceFee = 25 * guests;
+            const tax = (basePrice + serviceFee) * 0.1; // 10% tax
+            const total = basePrice + serviceFee + tax;
+
+            // Update summary
+            document.getElementById('summaryPackage').textContent = packageInfo.name;
+            document.getElementById('summaryDuration').textContent = packageInfo.duration;
+            document.getElementById('summaryGuests').textContent = guests;
+            document.getElementById('summaryPrice').textContent = `£${basePrice}`;
+            document.getElementById('summaryTax').textContent = `£${tax.toFixed(2)}`;
+            document.getElementById('summaryTotal').textContent = `£${total.toFixed(2)}`;
+
+            // Update features list
+            const featuresList = document.getElementById('includedFeatures');
+            featuresList.innerHTML = '';
+            packageInfo.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+        }
+
+        // Form Input Listeners
+        document.getElementById('guests').addEventListener('change', updateSummary);
+        document.getElementById('travelDate').addEventListener('change', function() {
+            // Set minimum date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            this.min = tomorrow.toISOString().split('T')[0];
+        });
+
+        // Payment Method Selection
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate payment method selected
+            const selectedPayment = document.querySelector('.payment-option.selected');
+            if (!selectedPayment) {
+                alert('Please select a payment method');
+                return;
+            }
+
+            // Show confirmation modal
+            const modal = document.getElementById('confirmationModal');
+            const formData = {
+                package: document.getElementById('summaryPackage').textContent,
+                date: document.getElementById('travelDate').value,
+                guests: document.getElementById('guests').value,
+                total: document.getElementById('summaryTotal').textContent,
+                name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value
+            };
+
+            // Generate booking reference
+            const bookingRef = 'MF-' + new Date().getFullYear() + '-' + 
+                String(Math.floor(Math.random() * 100000)).padStart(5, '0');
+            
+            // Update modal details
+            document.getElementById('bookingRef').textContent = bookingRef;
+            document.getElementById('confirmPackage').textContent = formData.package;
+            document.getElementById('confirmDate').textContent = new Date(formData.date).toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            document.getElementById('confirmGuests').textContent = formData.guests;
+            document.getElementById('confirmTotal').textContent = formData.total;
+
+            // Show modal
+            modal.classList.add('active');
+            
+            // Add celebration effect
+            createCelebrationEffect();
+        });
+
+        // Celebration Effect
+        function createCelebrationEffect() {
+            const colors = ['#D4AF37', '#FFD700', '#FFED4E', '#FFFFFF'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        width: 10px;
+                        height: 10px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 2001;
+                    `;
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = 2 + Math.random() * 3;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+                    
+                    let x = 0;
+                    let y = 0;
+                    let opacity = 1;
+                    
+                    function animate() {
+                        x += vx;
+                        y += vy;
+                        vy += 0.1; // gravity
+                        opacity -= 0.02;
+                        
+                        particle.style.transform = `translate(${x}px, ${y}px)`;
+                        particle.style.opacity = opacity;
+                        
+                        if (opacity > 0) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            particle.remove();
+                        }
+                    }
+                    
+                    document.body.appendChild(particle);
+                    animate();
+                }, i * 30);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+            createFloatingCoins();
+            updateSummary();
+            
+            // Set minimum date for travel
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('travelDate').min = tomorrow.toISOString().split('T')[0];
+            
+            // Select default payment method
+            paymentOptions[0].classList.add('selected');
+        });
+
+        window.addEventListener('resize', resizeCanvas);
+
+        // Close modal on outside click
+        document.getElementById('confirmationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Package card hover effects
+        packageCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('popular')) {
+                    this.style.transform = 'translateY(-10px) rotateX(2deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('popular')) {
+                    this.style.transform = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

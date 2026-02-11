@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medieval Renaissance Fair | Time Travel Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modern Design Variables */
+        :root {
+            --primary: #8b4513;
+            --primary-dark: #5d2906;
+            --primary-light: #d2691e;
+            --secondary: #d4af37;
+            --secondary-light: #ffd700;
+            --secondary-dark: #b8860b;
+            --accent: #dc143c;
+            --dark: #1a0f0a;
+            --light: #f8f4e9;
+            --light-bg: #fffcf5;
+            --gradient-gold: linear-gradient(135deg, #d4af37, #ffd700, #ffed4e);
+            --gradient-wood: linear-gradient(135deg, #8b4513, #a0522d, #d2691e);
+            --gradient-royal: linear-gradient(135deg, #1a0f0a, #5d2906, #8b4513);
+            --gradient-parchment: linear-gradient(135deg, #f8f4e9, #fffcf5, #f5f0e1);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-xl: 0 35px 60px -15px rgba(139, 69, 19, 0.3);
+            --glass-bg: rgba(255, 253, 250, 0.85);
+            --border-glow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Modern Body Background */
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--gradient-parchment);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        
+
+        /* Modern Navigation */
+        .navbar-modern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 15, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+        }
+
+        .navbar-modern.scrolled {
+            background: rgba(26, 15, 10, 0.98);
+            border-bottom-color: var(--secondary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo-modern {
+            display: flex;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-logo-modern i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-light);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after, .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        /* Modern Hero Section */
+        .hero-modern {
+            height: 100vh;
+            min-height: 800px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            background: 
+                linear-gradient(135deg, 
+                    rgba(26, 15, 10, 0.92) 0%, 
+                    rgba(93, 41, 6, 0.85) 50%, 
+                    rgba(139, 69, 19, 0.78) 100%),
+                url('https://pbs.twimg.com/media/CeU5agWXIAAQhue.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 3s infinite linear;
+            background-size: 200% auto;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--secondary-light);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Modern Buttons */
+        .btn-glow {
+            background: var(--gradient-wood);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-gold);
+            border-radius: 52px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .btn-glow:hover::before {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-large {
+            padding: 1.5rem 4rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-outline-glow {
+            background: transparent;
+            color: var(--secondary-light);
+            border: 2px solid var(--secondary);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-glow:hover {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(212, 175, 55, 0.2);
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 60%; right: 15%; animation-delay: 1s; }
+        .floating-element:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-element:nth-child(4) { top: 40%; right: 25%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Modern Features Section */
+        .features-modern {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, 
+                var(--light-bg) 0%,
+                #fffaf0 50%,
+                var(--light-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card-modern {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card-modern::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-wood);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card-modern:hover::after {
+            transform: scaleX(1);
+        }
+
+        .feature-card-modern:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon-modern {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s;
+        }
+
+        .feature-card-modern:hover .feature-icon-modern {
+            transform: rotateY(180deg) scale(1.1);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .feature-card-modern h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+        }
+
+        .feature-card-modern p {
+            color: var(--dark);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* History Section Modern */
+        .history-section-modern {
+            padding: 8rem 0;
+            background: 
+                linear-gradient(rgba(245, 240, 230, 0.95), rgba(245, 240, 230, 0.95)),
+                url('https://www.transparenttextures.com/patterns/parchment.png');
+            position: relative;
+        }
+
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .history-text h3 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .history-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .history-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .history-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.1rem;
+        }
+
+        .history-list i {
+            color: var(--secondary);
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+
+        .history-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 5px solid var(--secondary);
+        }
+
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .history-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--primary);
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            margin-top: -5px;
+        }
+
+        /* Wikipedia Gallery Modern */
+        .gallery-preview-modern {
+            padding: 8rem 0;
+            background: 
+                linear-gradient(135deg, rgba(255, 253, 247, 0.95) 0%, rgba(250, 245, 235, 0.95) 100%),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+
+        .wikipedia-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .wiki-photo {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s;
+            border: 3px solid transparent;
+        }
+
+        .wiki-photo:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary);
+        }
+
+        .wiki-photo img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .wiki-photo:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-info {
+            padding: 1.5rem;
+        }
+
+        .photo-info h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+        }
+
+        .photo-info p {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .wikipedia-info {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 4rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .wikipedia-info h3 {
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+        }
+
+        .wikipedia-info h3 i {
+            color: #636466;
+        }
+
+        .wiki-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .wiki-fact {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(212, 175, 55, 0.1));
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .wiki-fact:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-text {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .wiki-source {
+            text-align: center;
+            font-style: italic;
+            color: var(--primary);
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .wiki-source a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 2px;
+        }
+
+        .wiki-source a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Video Section Modern */
+        .video-section-modern {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, 
+                #1a0f0a 0%,
+                #2a1c07 30%,
+                #1a0f0a 70%,
+                #0d0901 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-section-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-gold);
+            animation: shimmer 3s infinite linear;
+        }
+
+        .video-container-modern {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .video-embed-container {
+            margin-bottom: 2rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s;
+        }
+
+        .video-wrapper:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+        }
+
+        .video-caption {
+            text-align: center;
+            color: white;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .video-grid-modern {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .video-item-modern {
+            cursor: pointer;
+            transition: all 0.4s;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .video-item-modern:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .video-item-modern .video-thumbnail {
+            height: 120px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-item-modern .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .video-item-modern:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .video-item-modern p {
+            color: white;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* Additional Videos Modern */
+        .video-row-modern {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .additional-videos-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .additional-video-modern {
+            cursor: pointer;
+            transition: all 0.4s;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .additional-video-modern:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .additional-video-modern .video-thumbnail {
+            height: 160px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .additional-video-modern .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .additional-video-modern:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .additional-video-modern p {
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section Modern */
+        .cta-section-modern {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, 
+                var(--primary) 0%, 
+                var(--primary-dark) 30%, 
+                #a0522d 70%, 
+                var(--primary-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .cta-card-modern {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 4rem;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .cta-card-modern h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-family: 'Cinzel', serif;
+        }
+
+        .cta-card-modern p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-note {
+            margin-top: 1.5rem;
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        /* Footer Modern */
+        .footer-modern {
+            background: var(--gradient-royal);
+            color: white;
+            padding: 5rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-gold);
+        }
+
+        .footer-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col-modern {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-logo-modern {
+            display: flex;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-light);
+        }
+
+        .footer-logo-modern i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .footer-col-modern h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-light);
+            font-family: 'Cinzel', serif;
+        }
+
+        .footer-col-modern ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col-modern ul li {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-col-modern ul li i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 3px;
+            width: 20px;
+        }
+
+        .footer-col-modern a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col-modern a:hover {
+            color: var(--secondary-light);
+        }
+
+        .social-links-modern {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links-modern a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links-modern a:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form-modern {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form-modern input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .newsletter-form-modern input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-form-modern button {
+            background: var(--secondary);
+            color: var(--dark);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form-modern button:hover {
+            background: var(--secondary-light);
+        }
+
+        .footer-bottom-modern {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom-modern a {
+            color: var(--secondary-light);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .history-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .video-container-modern {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(26, 15, 10, 0.98);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                text-align: center;
+                transition: 0.4s;
+                padding: 2rem 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-glow, .btn-outline-glow {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .cta-card-modern {
+                padding: 3rem 1.5rem;
+            }
+            
+            .cta-card-modern h2 {
+                font-size: 2.5rem;
+            }
+            
+            .additional-videos-modern {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid, .wikipedia-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .additional-videos-modern {
+                grid-template-columns: 1fr;
+            }
+            
+            .wiki-facts {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid-modern {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Video Play Button */
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s;
+            opacity: 0;
+        }
+
+        .video-thumbnail:hover .video-play-btn {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="navbar-modern" id="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-logo-modern">
+                    <i class="fas fa-crown"></i>
+                    <span>MEDIEVALFEST</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="booking.html" class="btn-glow">Book Now</a>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modern Hero Section -->
+    <section class="hero-modern">
+        <!-- Floating Elements -->
+        <div class="floating-element"><i class="fas fa-chess-knight"></i></div>
+        <div class="floating-element"><i class="fas fa-shield-alt"></i></div>
+        <div class="floating-element"><i class="fas fa-crown"></i></div>
+        <div class="floating-element"><i class="fas fa-dragon"></i></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">STEP BACK IN TIME</h1>
+            <p class="hero-subtitle">Experience the Magic of the Medieval Renaissance Fair</p>
+            <p class="hero-description">Join us for an unforgettable journey to England's most authentic medieval festival. Jousting tournaments, artisanal markets, feasts, and entertainment await! Travel to the world's largest Renaissance fair and immerse yourself in living history.</p>
+            <div class="hero-actions">
+                <a href="booking.html" class="btn-glow btn-large">Book Your Trip</a>
+                <a href="#features" class="btn-outline-glow">Learn More</a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Modern Features Section -->
+    <section class="features-modern" id="features">
+        <div class="container">
+            <h2 class="section-title">What Awaits You</h2>
+            <p class="section-subtitle">An authentic medieval experience in the heart of England</p>
+            
+            <div class="features-grid">
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Jousting Tournaments</h3>
+                    <p>Witness thrilling knight tournaments with authentic armor and horseback competitions. Experience the adrenaline of full-contact jousting matches.</p>
+                </div>
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Medieval Feasts</h3>
+                    <p>Feast like royalty with traditional foods, mead, and entertainment in grand halls. Enjoy roast boar, turkey legs, and period recipes.</p>
+                </div>
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <h3>Live Entertainment</h3>
+                    <p>Enjoy minstrels, jesters, fire-eaters, and theatrical performances throughout the day. Interactive shows for all ages.</p>
+                </div>
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Artisan Market</h3>
+                    <p>Browse unique handmade crafts, jewelry, leatherwork, and medieval souvenirs from master craftsmen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section Modern -->
+    <section class="history-section-modern" id="history">
+        <div class="container">
+            <h2 class="section-title">The History of Renaissance Fairs</h2>
+            <p class="section-subtitle">From 1960s California to global phenomenon</p>
+            
+            <div class="history-content">
+                <div class="history-text">
+                    <h3>Origins and Evolution</h3>
+                    <p>According to Wikipedia, the Renaissance fair is an outdoor gathering that recreates a historical setting for the amusement of its guests. The first modern Renaissance fair was created by schoolteacher Phyllis Patterson in 1963 in California as a class activity.</p>
+                    
+                    <p>These fairs have grown into major events, with some attracting over 200,000 visitors annually. They typically feature:</p>
+                    
+                    <ul class="history-list">
+                        <li><i class="fas fa-theater-masks"></i> Costumed performers and historical reenactments</li>
+                        <li><i class="fas fa-utensils"></i> Period food and drink (turkey legs, mead, ale)</li>
+                        <li><i class="fas fa-chess-knight"></i> Jousting tournaments and combat demonstrations</li>
+                        <li><i class="fas fa-hammer"></i> Artisan crafts and historical demonstrations</li>
+                        <li><i class="fas fa-music"></i> Musical and theatrical performances</li>
+                    </ul>
+                    
+                    <p>Today, Renaissance fairs are held throughout the United States, Canada, Australia, and the United Kingdom, with the largest concentration in the United States.</p>
+                </div>
+                
+                <div class="history-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Mary_Queen_of_Scots_reenactor.jpg" alt="Renaissance Fair Scene from Wikipedia">
+                    <p class="image-caption" style="padding-block-end: 10;">A typical Renaissance fair scene - Photo from Wikipedia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wikipedia Gallery Modern -->
+    <section class="gallery-preview-modern">
+        <div class="container">
+            <h2 class="section-title">Authentic Renaissance Fair Scenes</h2>
+            
+            
+            <div class="wikipedia-gallery">
+                <div class="wiki-photo">
+                    <img src="https://i.ytimg.com/vi/JHWZcJYPgZ0/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGE4gZShGMA8=&rs=AOn4CLCOdzXtrlr11m_Sv-9r4HOMDEUQoQ" alt="Renaissance Fair Chess Game">
+                    <div class="photo-info">
+                        <h4>Living Chess Game</h4>
+                        <p>Interactive chess with costumed participants - a fair tradition</p>
+                    </div>
+                </div>
+                <div class="wiki-photo">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/01/67/c3/20180805-095010-hdr-largejpg.jpg?w=1200&h=-1&s=1" alt="Wisconsin Renaissance Fair">
+                    <div class="photo-info">
+                        <h4>Wisconsin Festival</h4>
+                        <p>One of the largest Renaissance fairs in the United States</p>
+                    </div>
+                </div>
+                <div class="wiki-photo">
+                    <img src="https://i.redd.it/my-look-and-some-picks-from-the-ohio-renaissance-festival-v0-lll3b69xt2tb1.jpg?width=3507&format=pjpg&auto=webp&s=9c679b386bb54dca8ef8e5b6ee88f3f65e9d7729" alt="Ohio Renaissance Festival">
+                    <div class="photo-info">
+                        <h4>Ohio Renaissance Festival</h4>
+                        <p>Annual event attracting thousands of visitors</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wikipedia-info">
+                <h3><i class="fab fa-wikipedia-w"></i> Wikipedia Facts</h3>
+                <div class="wiki-facts">
+                    <div class="wiki-fact">
+                        <span class="fact-number">300+</span>
+                        <span class="fact-text">Renaissance fairs in North America</span>
+                    </div>
+                    <div class="wiki-fact">
+                        <span class="fact-number">1963</span>
+                        <span class="fact-text">First modern Renaissance fair</span>
+                    </div>
+                    <div class="wiki-fact">
+                        <span class="fact-number">200,000+</span>
+                        <span class="fact-text">Annual visitors at largest fairs</span>
+                    </div>
+                    <div class="wiki-fact">
+                        <span class="fact-number">16th Century</span>
+                        <span class="fact-text">Historical period recreated</span>
+                    </div>
+                </div>
+                <p class="wiki-source">Source: <a href="https://en.wikipedia.org/wiki/Renaissance_fair" target="_blank">Wikipedia - Renaissance fair</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section Modern -->
+    <section class="video-section-modern">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Experience the Renaissance</h2>
+            <p class="section-subtitle" style="color: var(--secondary-light);">Watch authentic Renaissance festival experiences from across the USA</p>
+            
+            <div class="video-container-modern">
+                <!-- Main Video Embed -->
+                <div class="video-embed-container">
+                    <div class="video-wrapper">
+                        <iframe 
+                            width="100%" 
+                            height="400" 
+                            src="https://www.youtube.com/embed/vvkh4guWKX8" 
+                            title="Texas Renaissance Festival 2023"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-caption">Texas Renaissance Festival 2023 - America's Largest Renaissance Fair</p>
+                </div>
+                
+                <!-- Small Video Thumbnails -->
+                <div class="video-grid-modern">
+                    <div class="video-item-modern" onclick="playVideo('CtD2l5aKkGQ', 'Texas Renaissance Festival 2023')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/CtD2l5aKkGQ/mqdefault.jpg" alt="Texas Renaissance Festival">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>Texas Renaissance Fair</p>
+                    </div>
+                    <div class="video-item-modern" onclick="playVideo('TwiOaANanrc', 'A Day at Arizona Renaissance Festival')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/TwiOaANanrc/mqdefault.jpg" alt="Arizona Renaissance Festival">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>Arizona Renaissance Fair</p>
+                    </div>
+                    <div class="video-item-modern" onclick="playVideo('_6fUl7xbKUA', 'Minnesota Renaissance Festival Full Tour')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/_6fUl7xbKUA/mqdefault.jpg" alt="Minnesota Renaissance Festival">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>Minnesota Renaissance Fair</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Videos -->
+            <div class="video-row-modern">
+                <h3 style="text-align: center; color: var(--secondary-light); font-size: 2rem; margin-bottom: 2rem;">More Renaissance Festival Highlights</h3>
+                <div class="additional-videos-modern">
+                    <div class="additional-video-modern" onclick="playVideo('bhcHNR-3R0Q', 'Knights of Valour: Jousting')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/bhcHNR-3R0Q/mqdefault.jpg" alt="Jousting Tournament">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>Knights of Valour: Jousting</p>
+                    </div>
+                    <div class="additional-video-modern" onclick="playVideo('xSG0jBap3X0', 'A Day at the Festival')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/xSG0jBap3X0/mqdefault.jpg" alt="Renaissance Experience">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>A Day at the Festival</p>
+                    </div>
+                    <div class="additional-video-modern" onclick="playVideo('y17t0pwY4nI', 'Maryland Renaissance Festival')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/y17t0pwY4nI/mqdefault.jpg" alt="Maryland Ren Fest">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>Maryland Renaissance Festival</p>
+                    </div>
+                    <div class="additional-video-modern" onclick="playVideo('oANjN65s1fE', 'Medieval Atmosphere & Food')">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/oANjN65s1fE/mqdefault.jpg" alt="Atmosphere">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <p>Medieval Atmosphere & Food</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern CTA Section -->
+    <section class="cta-section-modern">
+        <div class="container">
+            <div class="cta-card-modern">
+                <h2>Ready for Your Historical Adventure?</h2>
+                <p>Join thousands of visitors from around the world at the most authentic Renaissance festival experience. Our travel packages make it easy to enjoy this unique cultural event. Limited spots available for our exclusive travel packages. Book now to secure your place at this year's most anticipated medieval festival.</p>
+                <a href="booking.html" class="btn-glow btn-large">Book Your Renaissance Journey</a>
+                <p class="cta-note">All packages include accommodation, festival tickets, and guided experiences</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Footer -->
+    <footer class="footer-modern" id="contact">
+        <div class="container">
+            <div class="footer-grid-modern">
+                <div class="footer-col-modern">
+                    <div class="footer-logo-modern">
+                        <i class="fas fa-crown"></i>
+                        <span>MedievalFest</span>
+                    </div>
+                    <p>Specialists in authentic Renaissance festival travel experiences. We partner with historical societies to create educational and entertaining journeys.</p>
+                    <div class="social-links-modern">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://en.wikipedia.org/wiki/Renaissance_fair" target="_blank"><i class="fab fa-wikipedia-w"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col-modern">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="experience.html">The Experience</a></li>
+                        <li><a href="booking.html">Book Your Trip</a></li>
+                        <li><a href="#history">History of Renaissance Fairs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-modern">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Castle Street, London, UK</li>
+                        <li><i class="fas fa-phone"></i> +44 20 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@medievalfest.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm GMT</li>
+                    </ul>
+                </div>
+                <div class="footer-col-modern">
+                    <h3>Historical Resources</h3>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Renaissance_fair" target="_blank">Wikipedia: Renaissance Fair</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/English_Renaissance" target="_blank">English Renaissance</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Jousting" target="_blank">History of Jousting</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Medieval_cuisine" target="_blank">Medieval Cuisine</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-modern">
+                <p>&copy; 2026 Covali Alexandr. All rights reserved. CEITI | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | Photos sourced from <a href="https://en.wikipedia.org/wiki/Renaissance_fair" target="_blank">Wikipedia</a> under Creative Commons license</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Video player function
+        function playVideo(videoId, title) {
+            const iframe = document.querySelector('.video-wrapper iframe');
+            if (iframe) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                const caption = document.querySelector('.video-caption');
+                if (caption) {
+                    caption.textContent = title;
+                }
+                
+                // Highlight selected video
+                document.querySelectorAll('.video-item-modern, .additional-video-modern').forEach(v => {
+                    v.style.borderColor = 'transparent';
+                    v.style.background = 'rgba(255, 255, 255, 0.05)';
+                });
+                
+                // Find and highlight clicked video
+                event.currentTarget.style.borderColor = 'var(--secondary)';
+                event.currentTarget.style.background = 'rgba(212, 175, 55, 0.1)';
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form-modern button').addEventListener('click', function() {
+            const emailInput = this.parentElement.querySelector('input');
+            const email = emailInput.value;
+            
+            if (email && validateEmail(email)) {
+                alert(`Thank you for subscribing with: ${email}`);
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Add hover effects to all interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effect to feature cards
+            document.querySelectorAll('.feature-card-modern, .wiki-photo, .additional-video-modern').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add click to video play buttons
+            document.querySelectorAll('.video-play-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const videoItem = this.closest('.video-item-modern, .additional-video-modern');
+                    const videoId = videoItem.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    const videoTitle = videoItem.querySelector('p').textContent;
+                    playVideo(videoId, videoTitle);
+                });
+            });
+        });
+    </script>
+</body>
+
+    
+</html>
